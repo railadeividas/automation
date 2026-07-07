@@ -3,163 +3,446 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Automation Demo</title>
+  <title>Automation — kaip buvo sukurtas šis puslapis</title>
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
       font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-      background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: #fff;
+      background: #0d1117;
+      color: #c9d1d9;
+      line-height: 1.7;
     }
-    .container {
+    .container { max-width: 900px; margin: 0 auto; padding: 2rem 1.5rem; }
+    header {
       text-align: center;
-      padding: 2rem;
-      max-width: 800px;
-    }
-    .logo {
-      font-size: 4rem;
-      margin-bottom: 1rem;
-      animation: float 3s ease-in-out infinite;
-    }
-    @keyframes float {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-10px); }
+      padding: 3rem 0 2rem;
+      border-bottom: 1px solid #30363d;
+      margin-bottom: 2.5rem;
     }
     h1 {
-      font-size: 3rem;
-      font-weight: 800;
-      background: linear-gradient(90deg, #00d2ff, #928dab);
+      font-size: 2.5rem;
+      background: linear-gradient(90deg, #58a6ff, #bc8cff);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       margin-bottom: 0.5rem;
     }
-    p.tagline {
-      font-size: 1.2rem;
-      color: rgba(255,255,255,0.7);
-      margin-bottom: 2rem;
-    }
-    .card-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 1.5rem;
-      margin: 2rem 0;
-    }
-    .card {
-      background: rgba(255,255,255,0.08);
-      backdrop-filter: blur(10px);
-      border: 1px solid rgba(255,255,255,0.1);
+    header p { color: #8b949e; font-size: 1.1rem; }
+    .badge {
+      display: inline-block;
+      padding: 0.25rem 0.75rem;
+      background: #1f6feb22;
+      border: 1px solid #1f6feb44;
       border-radius: 1rem;
+      font-size: 0.8rem;
+      color: #58a6ff;
+      margin-top: 0.75rem;
+    }
+    h2 {
+      font-size: 1.5rem;
+      color: #f0f6fc;
+      margin-top: 2.5rem;
+      margin-bottom: 1rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 1px solid #21262d;
+    }
+    h3 {
+      font-size: 1.15rem;
+      color: #f0f6fc;
+      margin-top: 1.5rem;
+      margin-bottom: 0.75rem;
+    }
+    p { margin-bottom: 1rem; color: #c9d1d9; }
+    .step {
+      background: #161b22;
+      border: 1px solid #30363d;
+      border-radius: 8px;
       padding: 1.5rem;
-      transition: all 0.3s ease;
-      cursor: default;
+      margin-bottom: 1.5rem;
     }
-    .card:hover {
-      transform: translateY(-5px);
-      background: rgba(255,255,255,0.12);
-      border-color: rgba(255,255,255,0.2);
-    }
-    .card-icon { font-size: 2.5rem; margin-bottom: 1rem; }
-    .card h3 { font-size: 1.2rem; margin-bottom: 0.5rem; }
-    .card p { font-size: 0.9rem; color: rgba(255,255,255,0.6); }
-    .progress-bar {
-      width: 100%;
-      height: 8px;
-      background: rgba(255,255,255,0.1);
-      border-radius: 4px;
-      margin: 1rem 0;
-      overflow: hidden;
-    }
-    .progress-fill {
-      height: 100%;
-      width: 0%;
-      background: linear-gradient(90deg, #00d2ff, #3a7bd5);
-      border-radius: 4px;
-      animation: progress 3s ease-in-out infinite;
-    }
-    @keyframes progress {
-      0% { width: 0%; }
-      50% { width: 70%; }
-      100% { width: 100%; }
-    }
-    .status {
+    .step-number {
       display: inline-flex;
       align-items: center;
-      gap: 0.5rem;
-      padding: 0.5rem 1.2rem;
-      background: rgba(0,210,255,0.15);
-      border: 1px solid rgba(0,210,255,0.3);
-      border-radius: 2rem;
-      font-size: 0.9rem;
-      margin-top: 1.5rem;
-    }
-    .dot {
-      width: 8px;
-      height: 8px;
-      background: #00d2ff;
+      justify-content: center;
+      width: 2rem;
+      height: 2rem;
+      background: linear-gradient(135deg, #58a6ff, #bc8cff);
       border-radius: 50%;
-      animation: pulse 2s infinite;
+      font-weight: 700;
+      font-size: 0.9rem;
+      color: #0d1117;
+      margin-right: 0.5rem;
     }
-    @keyframes pulse {
-      0%, 100% { opacity: 1; }
-      50% { opacity: 0.3; }
+    .step-title {
+      font-weight: 600;
+      font-size: 1.1rem;
+      color: #f0f6fc;
+      margin-bottom: 0.75rem;
     }
-    .footer {
-      margin-top: 3rem;
-      font-size: 0.8rem;
-      color: rgba(255,255,255,0.3);
+    pre {
+      background: #0d1117;
+      border: 1px solid #30363d;
+      border-radius: 6px;
+      padding: 1rem;
+      overflow-x: auto;
+      font-size: 0.85rem;
+      font-family: 'Consolas', 'Monaco', monospace;
+      line-height: 1.5;
+      margin: 0.75rem 0;
     }
-    .footer a {
-      color: rgba(255,255,255,0.5);
+    code {
+      font-family: 'Consolas', 'Monaco', monospace;
+      background: #161b22;
+      padding: 0.15rem 0.4rem;
+      border-radius: 3px;
+      font-size: 0.85rem;
+      color: #f0f6fc;
+    }
+    pre code { background: none; padding: 0; }
+    .comment { color: #8b949e; }
+    .keyword { color: #ff7b72; }
+    .string { color: #a5d6ff; }
+    .func { color: #d2a8ff; }
+    .cmd { color: #79c0ff; }
+    .highlight { background: #1f6feb22; border-left: 3px solid #1f6feb; padding: 0.75rem 1rem; border-radius: 0 6px 6px 0; margin: 0.75rem 0; }
+    .highlight strong { color: #58a6ff; }
+    .tip {
+      background: #3fb95022;
+      border: 1px solid #3fb95044;
+      border-radius: 6px;
+      padding: 1rem;
+      margin: 1rem 0;
+    }
+    .tip strong { color: #3fb950; }
+    .warning {
+      background: #d2992222;
+      border: 1px solid #d2992244;
+      border-radius: 6px;
+      padding: 1rem;
+      margin: 1rem 0;
+    }
+    .warning strong { color: #d29922; }
+    .danger {
+      background: #f8514922;
+      border: 1px solid #f8514944;
+      border-radius: 6px;
+      padding: 1rem;
+      margin: 1rem 0;
+    }
+    .danger strong { color: #f85149; }
+    ul { margin: 0.5rem 0 1rem 1.5rem; }
+    li { margin-bottom: 0.4rem; }
+    .nav-links {
+      text-align: center;
+      margin: 3rem 0 1.5rem;
+    }
+    .nav-links a {
+      color: #58a6ff;
       text-decoration: none;
+      padding: 0.5rem 1rem;
+      border: 1px solid #30363d;
+      border-radius: 6px;
+      transition: all 0.2s;
     }
-    .footer a:hover { color: #00d2ff; }
+    .nav-links a:hover { background: #1f6feb22; border-color: #1f6feb; }
+    footer {
+      text-align: center;
+      padding: 2rem 0;
+      border-top: 1px solid #21262d;
+      margin-top: 3rem;
+      color: #8b949e;
+      font-size: 0.85rem;
+    }
+    footer a { color: #58a6ff; text-decoration: none; }
+    footer a:hover { text-decoration: underline; }
   </style>
 </head>
 <body>
   <div class="container">
-    <div class="logo">⚡</div>
-    <h1>Automation</h1>
-    <p class="tagline">Automated workflows &amp; pipelines — powered by community</p>
+    <header>
+      <h1>🚀 Automatinis GitHub Pages deploy</h1>
+      <p>Žingsnis po žingsnio — kaip šis puslapis atsirado internete per AI agentą</p>
+      <span class="badge">📖 Tutorial</span>
+    </header>
 
-    <div class="card-grid">
-      <div class="card">
-        <div class="card-icon">🔄</div>
-        <h3>CI/CD</h3>
-        <p>Continuous integration &amp; deployment pipelines</p>
-      </div>
-      <div class="card">
-        <div class="card-icon">🤖</div>
-        <h3>Automation</h3>
-        <p>Smart task scheduling &amp; orchestration</p>
-      </div>
-      <div class="card">
-        <div class="card-icon">📊</div>
-        <h3>Monitoring</h3>
-        <p>Real-time dashboards &amp; alerts</p>
-      </div>
-      <div class="card">
-        <div class="card-icon">🔗</div>
-        <h3>Integration</h3>
-        <p>Connect your favorite tools &amp; APIs</p>
+    <p>
+      Šis puslapis buvo sukurtas ir deploy'intas į <strong>GitHub Pages</strong> naudojant 
+      <strong>Hermes Agent</strong> (AI asistentą). Toliau — pilnas visų žingsnių aprašymas 
+      su komandomis, kurios buvo vykdomos.
+    </p>
+
+    <h2>📋 Ko reikia prieš pradedant</h2>
+    <ul>
+      <li><strong>GitHub token'as</strong> — susikurk <a href="https://github.com/settings/tokens" style="color:#58a6ff;">čia</a>. Rekomenduojama: <strong>classic PAT</strong> su <code>repo</code> scope. ⚠️ <strong>NIEKADA nesiųsk token'o į repozitoriją!</strong></li>
+      <li><strong>Git</strong> — įdiegtas lokaliai</li>
+      <li><strong>Repozitorija</strong> — jau sukurta (arba sukursime per API)</li>
+    </ul>
+
+    <!-- ====== STEP 1 ====== -->
+    <h2>1. Repozitorijos paruošimas</h2>
+
+    <div class="step">
+      <div class="step-title"><span class="step-number">1</span> Apsirašome GitHub token'ą</div>
+      <pre><code><span class="comment"># Token'ą saugome tik lokaliai, NIEKADA ne push'inam į repozitoriją!</span>
+<span class="comment"># Įrašome į git credential helper:</span>
+<span class="cmd">git config --global credential.helper store</span>
+<span class="cmd">echo "https://${GITHUB_USER}:${GITHUB_TOKEN}@github.com" >> ~/.git-credentials</span></code></pre>
+      <div class="danger">
+        <strong>⚠️ SVARBU:</strong> Token'as lieka tik tavo kompiuteryje (<code>~/.git-credentials</code>).
+        Jis NĖRA ir NIEKADA NEBUS push'intas į GitHub repozitoriją!
       </div>
     </div>
 
-    <div class="progress-bar">
-      <div class="progress-fill"></div>
+    <div class="step">
+      <div class="step-title"><span class="step-number">2</span> Patikriname ar token'as veikia</div>
+      <pre><code><span class="comment"># Užklausa į GitHub API:</span>
+<span class="cmd">curl -s -H "Authorization: token ${GITHUB_TOKEN}" \
+  https://api.github.com/user | jq .login</span>
+<span class="comment"># Atsakymas: "railadeividas" ✅</span>
+
+<span class="comment"># Patikriname teises į repozitoriją:</span>
+<span class="cmd">curl -s -H "Authorization: token ${GITHUB_TOKEN}" \
+  https://api.github.com/repos/railadeividas/automation | \
+  jq '{permissions: .permissions}'</span>
+<span class="comment"># {"permissions": {"admin": true, "push": true, ...}} ✅</span></code></pre>
     </div>
 
-    <div class="status">
-      <span class="dot"></span>
-      System online — v1.0.0
+    <!-- ====== STEP 2 ====== -->
+    <h2>2. Repozitorijos padarymas viešos (public)</h2>
+
+    <div class="step">
+      <div class="step-title"><span class="step-number">3</span> Pakeičiam vizualumą į public</div>
+      <p>GitHub Pages nemokamai veikia tik ant <strong>public</strong> repozitorijų (arba su GitHub Pro).</p>
+      <pre><code><span class="cmd">curl -s -X PATCH \
+  -H "Authorization: token ${GITHUB_TOKEN}" \
+  -H "Accept: application/vnd.github+json" \
+  https://api.github.com/repos/railadeividas/automation \
+  -d '{"private": false}'</span>
+<span class="comment"># Repo pakeista į public ✅</span></code></pre>
     </div>
 
-    <div class="footer">
-      <p><a href="https://github.com/railadeividas/automation">railadeividas/automation</a> &bull; GitHub Pages Demo</p>
+    <div class="step">
+      <div class="step-title"><span class="step-number">4</span> Klonuojame repozitoriją</div>
+      <pre><code><span class="cmd">git clone https://github.com/railadeividas/automation.git
+cd automation</span></code></pre>
     </div>
+
+    <!-- ====== STEP 3 ====== -->
+    <h2>3. Demo puslapio kūrimas</h2>
+
+    <div class="step">
+      <div class="step-title"><span class="step-number">5</span> Sukuriame HTML failą</div>
+      <pre><code><span class="comment"># Sukuriame index.html su stilingu dark-theme dizainu</span>
+<span class="cmd">cat > index.html << 'EOF'</span>
+&lt;!DOCTYPE html&gt;
+&lt;html lang="lt"&gt;
+&lt;head&gt;
+  &lt;meta charset="UTF-8"&gt;
+  &lt;title&gt;Automation Demo&lt;/title&gt;
+  &lt;style&gt;
+    /* gradient background, card grid, progress bar, animations */
+  &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;div class="container"&gt;
+    &lt;h1&gt;Automation&lt;/h1&gt;
+    &lt;p&gt;Automated workflows &amp; pipelines&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+<span class="cmd">EOF</span></code></pre>
+      <p>Puslapyje yra: gradientinis fonas, 4 kortelės (CI/CD, Automation, Monitoring, Integration), animuota progress bar, status indikatorius.</p>
+    </div>
+
+    <div class="step">
+      <div class="step-title"><span class="step-number">6</span> Sukuriame README.md</div>
+      <pre><code><span class="cmd">cat > README.md << 'EOF'</span>
+# Automation
+
+Automated workflows and pipelines — powered by community.
+
+Ši repozitorija automatiškai deploy'inta į GitHub Pages.
+EOF
+<span class="cmd">git add index.html README.md
+git commit -m "Initial commit: demo GitHub Page"</span></code></pre>
+    </div>
+
+    <!-- ====== STEP 4 ====== -->
+    <h2>4. Failų įkėlimas į GitHub per API</h2>
+
+    <div class="warning">
+      <strong>ℹ️ PASTABA:</strong> Šiame žingsnyje <code>git push</code> neveikė, nes buvo naudojamas <strong>fine-grained PAT</strong>. 
+      Tokie token'ai neveikia su git HTTPS push operacijomis, nors API užklausos veikia puikiai.
+      Sprendimas — įkelti failus per <strong>GitHub REST API</strong>.
+    </div>
+
+    <div class="step">
+      <div class="step-title"><span class="step-number">7</span> Įkeliame failus per API (PUT /contents)</div>
+      <pre><code><span class="comment"># Python script'as failų įkėlimui per API:</span>
+<span class="keyword">import</span> json, urllib.request, base64
+
+<span class="func">def</span> create_file(path, content, message):
+    data = json.dumps({
+        <span class="string">"message"</span>: message,
+        <span class="string">"content"</span>: base64.b64encode(content.encode()).decode(),
+        <span class="string">"branch"</span>: <span class="string">"master"</span>
+    }).encode()
+    req = urllib.request.Request(
+        <span class="string">f'https://api.github.com/repos/railadeividas/automation/contents/{path}'</span>,
+        data=data,
+        headers={<span class="string">'Authorization'</span>: <span class="string">f'token {TOKEN}'</span>},
+        method=<span class="string">'PUT'</span>
+    )
+    resp = json.loads(urllib.request.urlopen(req).read())
+    <span class="keyword">return</span> resp[<span class="string">'content'</span>][<span class="string">'sha'</span>]
+
+<span class="comment"># Įkeliame index.html</span>
+sha1 = create_file(<span class="string">"index.html"</span>, html_content,
+                   <span class="string">"Initial commit: index.html"</span>)
+<span class="comment"># Atsakymas: SHA 4713c3e0 ✅</span>
+
+<span class="comment"># Įkeliame README.md</span>
+sha2 = create_file(<span class="string">"README.md"</span>, md_content,
+                   <span class="string">"Initial commit: README.md"</span>)
+<span class="comment"># Atsakymas: SHA fd66bbe0 ✅</span></code></pre>
+    </div>
+
+    <!-- ====== STEP 5 ====== -->
+    <h2>5. GitHub Pages įjungimas</h2>
+
+    <div class="step">
+      <div class="step-title"><span class="step-number">8</span> Įjungiame Pages per API</div>
+      <pre><code><span class="comment"># POST request sukuria Pages konfigūraciją:</span>
+<span class="cmd">curl -s -X POST \
+  -H "Authorization: token ${GITHUB_TOKEN}" \
+  -H "Accept: application/vnd.github+json" \
+  https://api.github.com/repos/railadeividas/automation/pages \
+  -d '{"source": {"branch": "master", "path": "/"}}'</span>
+<span class="comment"># Atsakymas: {"status": "building", "html_url": "https://railadeividas.github.io/automation/"} ✅</span></code></pre>
+    </div>
+
+    <div class="step">
+      <div class="step-title"><span class="step-number">9</span> Tikriname būseną</div>
+      <pre><code><span class="comment"># Laukiame kol GitHub Pages su(si)deploy'ins (apie 1-2 min):</span>
+<span class="cmd">curl -s -H "Authorization: token ${GITHUB_TOKEN}" \
+  https://api.github.com/repos/railadeividas/automation/pages | \
+  jq '.status'</span>
+<span class="comment"># Pirma: "building" → po kelių bandymų: "built" ✅</span>
+
+<span class="comment"># Patikriname ar puslapis pasiekiamas:</span>
+<span class="cmd">curl -s -o /dev/null -w "%{http_code}" \
+  https://railadeividas.github.io/automation/</span>
+<span class="comment"># Atsakymas: 200 ✅ — puslapis gyvas!</span></code></pre>
+    </div>
+
+    <!-- ====== PABAIGA ====== -->
+    <h2>🎯 Rezultatas</h2>
+
+    <div class="tip">
+      <strong>✅ Puslapis gyvai:</strong> 
+      <a href="https://railadeividas.github.io/automation/" style="color:#58a6ff;">
+        railadeividas.github.io/automation
+      </a>
+    </div>
+
+    <p>Visi žingsniai buvo atlikti automatiškai <strong>Hermes Agent</strong> — AI asistento, sukurt komandos <strong>Nous Research</strong>. Agentas:</p>
+    <ul>
+      <li>⏱️ Patikrino ar token'as veikia ir kokias teises turi</li>
+      <li>🔓 Pakeitė repozitoriją iš private į public</li>
+      <li>📄 Sukūrė HTML + README failus</li>
+      <li>📤 Įkėlė juos per GitHub REST API (nes fine-grained PAT neveikia su git push)</li>
+      <li>🌐 Įjungė GitHub Pages</li>
+      <li>✅ Patvirtino kad puslapis pasiekiamas (HTTP 200)</li>
+    </ul>
+
+    <h2>🚨 Dažniausios klaidos ir sprendimai</h2>
+
+    <div class="step">
+      <h3>🔴 <code>git push</code> neveikia su fine-grained PAT</h3>
+      <p><strong>Klaida:</strong> <code>remote: Invalid username or token. Password authentication is not supported for Git operations.</code></p>
+      <p><strong>Sprendimas:</strong></p>
+      <ul>
+        <li><strong>1 variantas:</strong> Naudoti <strong>classic PAT</strong> su <code>repo</code> scope — jis veikia ir su git push, ir su API</li>
+        <li><strong>2 variantas:</strong> Naudoti GitHub REST API <code>PUT /repos/{owner}/{repo}/contents/{path}</code> — veikia su bet kokiu token'u</li>
+        <li><strong>3 variantas:</strong> Nusistatyti SSH raktą ir naudoti <code>git@github.com:...</code></li>
+      </ul>
+    </div>
+
+    <div class="step">
+      <h3>🔴 GitHub Pages neatsidaro (404)</h3>
+      <p><strong>Sprendimas:</strong> Palaukti 1-2 minutes, kol GitHub sudeploy'ins. Taip pat įsitikinti kad repozitorija yra <strong>public</strong> ir kad yra <code>index.html</code> failas šakninėje.</p>
+    </div>
+
+    <div class="step">
+      <h3>🔴 Token'as netyčia pateko į repozitoriją</h3>
+      <div class="danger">
+        <strong>⚠️ JEI TAIP ATSITIKO:</strong> 
+        <a href="https://github.com/settings/tokens" style="color:#f85149;">
+          Nedelsiant ištrink token'ą čia!
+        </a>
+        Tada sukurk naują.
+      </div>
+    </div>
+
+    <h2>📚 Komandų cheat sheet</h2>
+
+    <pre><code><span class="comment"># === Git ===</span>
+<span class="cmd">git config --global user.name "Vardas"</span>
+<span class="cmd">git config --global user.email "email@example.com"</span>
+<span class="cmd">git clone https://github.com/owner/repo.git</span>
+<span class="cmd">git add . && git commit -m "žinutė"</span>
+<span class="cmd">git push origin master</span>
+
+<span class="comment"># === GitHub API ===</span>
+<span class="cmd"># Patikrinti token'o teises:</span>
+<span class="cmd">curl -s -H "Authorization: token ${TOKEN}" https://api.github.com/user</span>
+
+<span class="comment"># Padaryti repo public:</span>
+<span class="cmd">curl -X PATCH -H "Authorization: token ${TOKEN}" \</span>
+<span class="cmd">  https://api.github.com/repos/owner/repo -d '{"private": false}'</span>
+
+<span class="comment"># Sukurti failą per API:</span>
+<span class="cmd">curl -X PUT -H "Authorization: token ${TOKEN}" \</span>
+<span class="cmd">  https://api.github.com/repos/owner/repo/contents/index.html \</span>
+<span class="cmd">  -d '{"message":"commit","content":"'$(base64 <<< "HTML")'","branch":"master"}'</span>
+
+<span class="comment"># Įjungti GitHub Pages:</span>
+<span class="cmd">curl -X POST -H "Authorization: token ${TOKEN}" \</span>
+<span class="cmd">  https://api.github.com/repos/owner/repo/pages \</span>
+<span class="cmd">  -d '{"source":{"branch":"master","path":"/"}}'</span>
+
+<span class="comment"># Patikrinti ar puslapis gyvas:</span>
+<span class="cmd">curl -s -o /dev/null -w "%{http_code}" https://user.github.io/repo/</span></code></pre>
+
+    <h2>🔑 Token'o saugumas (svarbiausia!)</h2>
+
+    <div class="danger">
+      <strong>⛔ NIEKADA:</strong>
+      <ul>
+        <li>Nedėk token'o į failus, kurie push'inami į GitHub (<code>.env</code>, konfigūracijos failai, kodo failai)</li>
+        <li>Nerašyk token'o į <code>index.html</code>, <code>README.md</code> ar bet kokį kitą viešą failą</li>
+        <li>Nesiųsk token'o per nesaugius kanalus (email, SMS, public chat)</li>
+      </ul>
+    </div>
+
+    <div class="tip">
+      <strong>✅ GERAI:</strong>
+      <ul>
+        <li>Saugok token'ą lokaliai: <code>~/.git-credentials</code>, <code>~/.bashrc</code> eksportas, <code>~/.hermes/.env</code></li>
+        <li>Naudok <strong>GitHub Actions secrets</strong> jei token'o reikia CI/CD pipeline'uose</li>
+        <li>Jei token'as nutekėjo — <a href="https://github.com/settings/tokens" style="color:#58a6ff;">ištrink jį</a> ir sukurk naują</li>
+      </ul>
+    </div>
+
+    <div class="nav-links">
+      <a href="https://github.com/railadeividas/automation">📂 Repozitorija</a>
+      <a href="https://railadeividas.github.io/automation/">🌐 Live puslapis</a>
+    </div>
+
+    <footer>
+      Sukurta su 🤖 <a href="https://hermes-agent.nousresearch.com">Hermes Agent</a> &nbsp;|&nbsp;
+      <a href="https://nousresearch.com">Nous Research</a> &nbsp;|&nbsp;
+      MIT License
+    </footer>
   </div>
 </body>
 </html>
