@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="lt">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Automation Demo</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+    }
+    .container {
+      text-align: center;
+      padding: 2rem;
+      max-width: 800px;
+    }
+    .logo {
+      font-size: 4rem;
+      margin-bottom: 1rem;
+      animation: float 3s ease-in-out infinite;
+    }
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+    h1 {
+      font-size: 3rem;
+      font-weight: 800;
+      background: linear-gradient(90deg, #00d2ff, #928dab);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 0.5rem;
+    }
+    p.tagline {
+      font-size: 1.2rem;
+      color: rgba(255,255,255,0.7);
+      margin-bottom: 2rem;
+    }
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1.5rem;
+      margin: 2rem 0;
+    }
+    .card {
+      background: rgba(255,255,255,0.08);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 1rem;
+      padding: 1.5rem;
+      transition: all 0.3s ease;
+      cursor: default;
+    }
+    .card:hover {
+      transform: translateY(-5px);
+      background: rgba(255,255,255,0.12);
+      border-color: rgba(255,255,255,0.2);
+    }
+    .card-icon { font-size: 2.5rem; margin-bottom: 1rem; }
+    .card h3 { font-size: 1.2rem; margin-bottom: 0.5rem; }
+    .card p { font-size: 0.9rem; color: rgba(255,255,255,0.6); }
+    .progress-bar {
+      width: 100%;
+      height: 8px;
+      background: rgba(255,255,255,0.1);
+      border-radius: 4px;
+      margin: 1rem 0;
+      overflow: hidden;
+    }
+    .progress-fill {
+      height: 100%;
+      width: 0%;
+      background: linear-gradient(90deg, #00d2ff, #3a7bd5);
+      border-radius: 4px;
+      animation: progress 3s ease-in-out infinite;
+    }
+    @keyframes progress {
+      0% { width: 0%; }
+      50% { width: 70%; }
+      100% { width: 100%; }
+    }
+    .status {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.5rem 1.2rem;
+      background: rgba(0,210,255,0.15);
+      border: 1px solid rgba(0,210,255,0.3);
+      border-radius: 2rem;
+      font-size: 0.9rem;
+      margin-top: 1.5rem;
+    }
+    .dot {
+      width: 8px;
+      height: 8px;
+      background: #00d2ff;
+      border-radius: 50%;
+      animation: pulse 2s infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.3; }
+    }
+    .footer {
+      margin-top: 3rem;
+      font-size: 0.8rem;
+      color: rgba(255,255,255,0.3);
+    }
+    .footer a {
+      color: rgba(255,255,255,0.5);
+      text-decoration: none;
+    }
+    .footer a:hover { color: #00d2ff; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="logo">⚡</div>
+    <h1>Automation</h1>
+    <p class="tagline">Automated workflows &amp; pipelines — powered by community</p>
+
+    <div class="card-grid">
+      <div class="card">
+        <div class="card-icon">🔄</div>
+        <h3>CI/CD</h3>
+        <p>Continuous integration &amp; deployment pipelines</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">🤖</div>
+        <h3>Automation</h3>
+        <p>Smart task scheduling &amp; orchestration</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">📊</div>
+        <h3>Monitoring</h3>
+        <p>Real-time dashboards &amp; alerts</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">🔗</div>
+        <h3>Integration</h3>
+        <p>Connect your favorite tools &amp; APIs</p>
+      </div>
+    </div>
+
+    <div class="progress-bar">
+      <div class="progress-fill"></div>
+    </div>
+
+    <div class="status">
+      <span class="dot"></span>
+      System online — v1.0.0
+    </div>
+
+    <div class="footer">
+      <p><a href="https://github.com/railadeividas/automation">railadeividas/automation</a> &bull; GitHub Pages Demo</p>
+    </div>
+  </div>
+</body>
+</html>
